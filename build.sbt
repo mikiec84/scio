@@ -223,6 +223,7 @@ lazy val scioBigQuery: Project = Project(
     libraryDependencies ++= Seq(
       dataflowSdkDependency,
       "commons-io" % "commons-io" % commonsIoVersion,
+      "com.google.apis" % "google-api-services-bigquery" % "v2-rev289-1.21.0",
       "org.slf4j" % "slf4j-api" % slf4jVersion,
       "org.joda" % "joda-convert" % jodaConvertVersion,
       "org.scalatest" %% "scalatest" % scalaTestVersion % "test"
