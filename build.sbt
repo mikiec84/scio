@@ -276,6 +276,7 @@ lazy val scioHdfs: Project = Project(
   settings = commonSettings ++ Seq(
     description := "Scio add-on for HDFS",
     libraryDependencies ++= Seq(
+      "com.google.cloud.bigdataoss" % "gcs-connector" % "1.4.5-hadoop2",
       "org.slf4j" % "slf4j-simple" % slf4jVersion,
       "com.github.scopt" %% "scopt" % "3.5.0",
       "org.apache.avro" % "avro-mapred" % avroVersion classifier("hadoop2"),
