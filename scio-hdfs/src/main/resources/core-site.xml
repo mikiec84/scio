@@ -8,11 +8,6 @@
 <configuration>
 
   <property>
-    <name>fs.defaultFS</name>
-    <value>hdfs://hadoopha/</value>
-  </property>
-
-  <property>
     <name>hadoop.tmp.dir</name>
     <value>/tmp/hadoop/</value>
   </property>
