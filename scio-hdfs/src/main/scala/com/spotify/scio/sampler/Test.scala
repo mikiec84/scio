@@ -22,13 +22,15 @@ import org.slf4j.LoggerFactory
 
 object Test {
 
+//  val p = "hdfs://hadoopha/anonym/cleaned/endsong/2016-07-01/00/part-r-00001.avro"
+//  val p = "gs://scio-example/anonym/cleaned/endsong/2016-03-01/00"
+  val p = "gs://scio-example/anonym/cleaned/endsong/2016-03-01/00/part-r-00001.avro"
+
   def main(args: Array[String]): Unit = {
     val logger = LoggerFactory.getLogger("Test")
-    // val path = new Path("hdfs:///anonym/cleaned/endsong/2016-07-01/00")
-    val path = new Path("gs://scio-example/anonym/cleaned/endsong/2016-03-01/00")
-    val r = new AvroRandomSampler(path).sample(1000)
-    r.map(_.toString).foreach(logger.info)
+    val path = new Path(p)
+    val data = new AvroRandomSampler(path).sample(10)
+    new AvroDataWriter(new Path("sample.avro")).write(data)
   }
-
 
 }
