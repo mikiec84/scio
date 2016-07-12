@@ -28,9 +28,24 @@ object Test {
 
   def main(args: Array[String]): Unit = {
     val logger = LoggerFactory.getLogger("Test")
-    val path = new Path(p)
-    val data = new AvroRandomSampler(path).sample(10)
-    new AvroDataWriter(new Path("sample.avro")).write(data)
+
+//    val path = new Path(p)
+//    val data = new AvroRandomSampler(path).sample(10)
+//    new AvroDataWriter(new Path("sample.avro")).write(data)
+
+    val opts = Parser.parse(args)
+    if (opts.isEmpty) {
+      sys.exit(-1)
+    }
+
+    val o = opts.get
+    o.inMode match {
+      case "avro" =>
+        val data = new AvroRandomSampler(new Path(o.in)).sample(o.n)
+        new AvroDataWriter(new Path(o.fileOut)).write(data)
+      case _ =>
+        throw new NotImplementedError(s"${o.inMode} not implemented")
+    }
   }
 
 }
